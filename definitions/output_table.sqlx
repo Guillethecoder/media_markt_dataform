@@ -18,7 +18,8 @@ FROM
 JOIN
     `exercice6.outlets_info` outlets_info ON sales_daily.outlet_id = outlets_info.outlet_id
 JOIN
-    `exercice6.curr_exchange` curr_exchange ON sales_daily.country = curr_exchange.country
+    `exercice6.curr_exchange_v2` curr_exchange ON sales_daily.country = curr_exchange.country
+    AND sales_daily.sales_date = curr_exchange.rate_date
 JOIN
     `exercice6.products_info` products_info ON sales_daily.product_id = products_info.product_id
 WHERE
