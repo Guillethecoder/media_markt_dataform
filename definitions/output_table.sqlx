@@ -19,4 +19,8 @@ JOIN
     `exercice6.outlets_info` outlets_info ON sales_daily.outlet_id = outlets_info.outlet_id
 JOIN
     `exercice6.curr_exchange` curr_exchange ON sales_daily.country = curr_exchange.country
+JOIN
+    `exercice6.products_info` products_info ON sales_daily.product_id = products_info.product_id
+WHERE
+    products_info.is_own_brand is FALSE
 GROUP BY sales_date, outlet_id, country, outlet_name, region
