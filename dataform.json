@@ -1,0 +1,6 @@
+{
+    "warehouse": "bigquery",
+    "defaultDatabase": "media-markt-exercice",
+    "defaultSchema": "exercice6",
+    "defaultLocation": "EU"
+}

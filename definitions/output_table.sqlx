@@ -1,0 +1,22 @@
+config {
+  type: "incremental",
+  name: "output_table",
+  schema: "exercice6",
+  uniqueKey: ["sales_date", "outlet_id"],
+  tags: ["daily_job"]
+}
+SELECT
+    sales_daily.country,
+    sales_daily.sales_date,
+    sales_daily.outlet_id,
+    outlets_info.outlet_name,
+    outlets_info.region,
+    SUM(sales_daily.sales_value) AS sales_value,
+    SUM(sales_daily.sales_value * curr_exchange.ex_loc_to_eur) AS sales_value_eur
+FROM
+    `exercice6.sales_daily` sales_daily
+JOIN
+    `exercice6.outlets_info` outlets_info ON sales_daily.outlet_id = outlets_info.outlet_id
+JOIN
+    `exercice6.curr_exchange` curr_exchange ON sales_daily.country = curr_exchange.country
+GROUP BY sales_date, outlet_id, country, outlet_name, region
